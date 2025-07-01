@@ -1,17 +1,23 @@
 function mincost(arr) {
-  arr.sort((a, b) => a - b); // Pehle chhoti se badi sort kar lein
+  // Step 1: Sort the array in ascending order
+  arr.sort((a, b) => a - b);
+
   let cost = 0;
 
   while (arr.length > 1) {
-    let first = arr.shift();  // sabse chhoti rope
-    let second = arr.shift(); // doosri chhoti rope
+    // Step 2: Take out the two smallest ropes
+    let first = arr.shift();  // smallest rope
+    let second = arr.shift(); // second smallest rope
 
     let newRope = first + second;
     cost += newRope;
 
-    arr.push(newRope);        // jodi hui rope daal do
-    arr.sort((a, b) => a - b); // wapas chhoti se badi sort karo
+    // Step 3: Push the new rope back and sort again
+    arr.push(newRope);
+    arr.sort((a, b) => a - b);
   }
 
   return cost;
 }
+
+module.exports = mincost;
